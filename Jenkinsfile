@@ -6,6 +6,10 @@ pipeline {
       }
     }
 
+    options {
+        skipDefaultCheckout()
+    }
+
     environment {
       CC = 'gcc'
       CXX = 'g++'
@@ -38,6 +42,7 @@ pipeline {
                   apt-get update -qq
 
                   DEBIAN_FRONTEND=noninteractive apt-get install -y \
+                    git                 \
                     cmake               \
                     ninja-build         \
                     python3-pip         \
@@ -49,12 +54,13 @@ pipeline {
                   apt-get clean
                 '''
                 sh '''
+                  git --version
                   cmake --version
                   python3 --version
                   pip --version
                 '''
 
-                sh "mkdir -p ${PROJECT_DIR_PATH}"
+                sh 'checkout scm'
             }
         }
 
