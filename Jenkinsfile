@@ -3,7 +3,6 @@ pipeline {
       docker {
         image 'gcc:14.2.0'
         args  '-u root'
-        reuseNode true
       }
     }
 
