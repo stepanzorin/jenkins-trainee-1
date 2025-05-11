@@ -60,7 +60,7 @@ pipeline {
                   pip --version
                 '''
 
-                sh 'checkout scm'
+                checkout scm
             }
         }
 
