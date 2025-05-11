@@ -2,12 +2,9 @@ pipeline {
     agent {
       docker {
         image 'gcc:14.2.0'
-        args  '-u root'
+        args  '-u root:root --init --privileged'
+        reuseNode true
       }
-    }
-
-    options {
-        skipDefaultCheckout()
     }
 
     environment {
@@ -74,6 +71,8 @@ pipeline {
 
                   pip install "conan==$CONAN_VERSION"
                   conan --version
+
+                  conan profile detect --exist-ok
 
                   conan install . --build=missing
                 '''
