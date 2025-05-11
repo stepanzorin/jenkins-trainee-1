@@ -1,0 +1,2 @@
+add_subdirectory(consumer_classes)
+add_subdirectory(test_classes)

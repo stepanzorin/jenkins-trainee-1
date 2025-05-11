@@ -1,1 +1,0 @@
-# jenkins-trainee-1
